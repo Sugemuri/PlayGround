@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="theme-color" content="#101513" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>Satisfy — The Living Continent</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Marcellus&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <div id="game"></div>
+    <div class="vignette"></div>
+    <header class="topbar">
+      <div class="brand"><div class="brand-mark">S</div><div><div class="brand-name">SATISFY</div><div class="brand-sub">THE LIVING CONTINENT</div></div></div>
+      <div class="realm-pill"><span class="realm-dot"></span> WEST CONTINENT <span class="realm-sep">/</span> <b id="locationLabel">WINSTON OUTSKIRTS</b></div>
+      <div class="top-right"><div class="clock"><span class="sun-icon">☼</span><span id="gameClock">DAY 01 · 08:42</span></div><div class="profile"><div class="profile-avatar">A</div><div><strong>ADVENTURER</strong><small>Wayfarer · Lv. 12</small></div></div></div>
+    </header>
+    <main class="hud">
+      <section class="left-stack">
+        <div class="panel player-panel">
+          <div class="panel-eyebrow">CHARACTER</div>
+          <div class="player-heading"><div class="crest">✦</div><div><h2>Arin Vale</h2><span class="class-line">Wanderer <i>·</i> Blacksmith's apprentice</span></div></div>
+          <div class="level-row"><span>LEVEL <b id="levelText">12</b></span><span id="xpText">2,460 / 3,200 XP</span></div><div class="xp-track"><i id="xpFill"></i></div>
+          <div class="vitals"><div><label>VITALITY</label><div class="bar hp"><i id="hpFill"></i></div><small id="hpText">86 / 100</small></div><div><label>STAMINA</label><div class="bar stamina"><i id="staminaFill"></i></div><small id="staminaText">72 / 100</small></div></div>
+          <div class="stats-row"><span>⚔ <b>18</b> STR</span><span>◈ <b>14</b> AGI</span><span>✧ <b>11</b> INT</span></div>
+        </div>
+        <div class="panel objective-panel"><div class="section-title"><span class="gold-bar"></span> ACTIVE THREAD</div><h3 id="questTitle">A Smith's Request</h3><p id="questDesc">Find master Khan's apprentice near the old stone bridge.</p><div class="quest-progress"><span class="quest-dot"></span><span id="questStep">Speak with the traveler</span></div><button class="text-button" id="questDetails">VIEW JOURNAL <span>↗</span></button></div>
+        <div class="panel nearby-panel"><div class="nearby-head"><span class="section-title"><span class="gold-bar"></span> NEARBY</span><span class="range-label">WITHIN 80M</span></div><div id="nearbyList" class="nearby-list"></div></div>
+      </section>
+      <section class="right-stack">
+        <div class="minimap panel"><div class="map-top"><span>LOCAL MAP</span><span class="map-coords" id="coords">N 42° · E 18°</span></div><div class="mini-map-art"><div class="map-river"></div><div class="map-road"></div><div class="map-player" id="mapPlayer"></div><span class="map-label label-winston">WINSTON</span><span class="map-label label-bridge">OLD BRIDGE</span><span class="map-tree t1">♠</span><span class="map-tree t2">♠</span><span class="map-tree t3">♠</span></div><div class="map-footer"><span><i class="legend-you"></i> YOU</span><span><i class="legend-npc"></i> NPC</span><span><i class="legend-quest"></i> QUEST</span></div><button class="map-expand" id="openMap">EXPLORE WORLD MAP <span>↗</span></button></div>
+        <div class="panel world-panel"><div class="section-title"><span class="gold-bar"></span> WORLD PULSE <span class="live-dot"></span></div><div class="pulse-story"><div class="pulse-icon">⌁</div><div><small id="pulseTag">WINSTON · COMMUNITY</small><p id="pulseText">The smithy fires burn low. The town needs iron before the next caravan.</p></div></div><div class="world-meters"><div><span>WINSTON PROSPERITY</span><b id="prosperityValue">42%</b><div class="meter"><i id="prosperityMeter" style="width:42%"></i></div></div><div><span>YOUR REPUTATION</span><b id="reputationValue">NEUTRAL</b><div class="rep-line"><i></i></div></div></div></div>
+        <div class="panel quick-panel"><div class="section-title"><span class="gold-bar"></span> QUICK ACCESS</div><div class="quick-grid"><button data-panel="inventory"><span>▤</span>INVENTORY<kbd>I</kbd></button><button data-panel="craft"><span>⚒</span>CRAFTING<kbd>K</kbd></button><button data-panel="journal"><span>☷</span>JOURNAL<kbd>J</kbd></button><button data-panel="world"><span>◉</span>WORLD<kbd>M</kbd></button></div></div>
+      </section>
+    </main>
+    <div class="bottom-hud"><div class="interaction-hint" id="interactionHint"><kbd>E</kbd><span>Talk to <b>Traveler Edda</b></span></div><div class="hotbar"><div class="hotbar-slot active"><kbd>1</kbd><span>⚔</span></div><div class="hotbar-slot"><kbd>2</kbd><span>✦</span></div><div class="hotbar-slot"><kbd>3</kbd><span>◈</span></div><div class="hotbar-slot"><kbd>4</kbd><span>◇</span></div><div class="hotbar-sep"></div><div class="hotbar-slot potion"><kbd>Q</kbd><span>✚</span><small>2</small></div><div class="weapon-label"><small>EQUIPPED</small><strong>IRONBOUND SABRE <span>Ⅱ</span></strong></div></div><div class="controls-hint"><span>WASD</span> MOVE <i>·</i> <span>SPACE</span> DODGE <i>·</i> <span>F</span> INTERACT</div></div>
+    <div class="toast" id="toast"></div>
+    <div class="dialogue-overlay" id="dialogueOverlay"><div class="dialogue-card panel"><button class="close-button" id="closeDialogue">×</button><div class="dialogue-npc"><div class="npc-portrait" id="npcPortrait">E</div><div><small id="npcRole">TRAVELER · WANDERER</small><h2 id="npcName">Edda</h2><div class="affinity"><span>✦</span> AFFINITY <b id="affinityValue">12</b><div class="affinity-track"><i id="affinityFill"></i></div></div></div></div><div class="dialogue-rule"></div><p class="dialogue-text" id="dialogueText"></p><div class="dialogue-choices" id="dialogueChoices"></div></div></div>
+    <div class="modal-overlay" id="modalOverlay"><div class="modal panel"><button class="close-button" id="closeModal">×</button><div id="modalContent"></div></div></div>
+    <div class="mobile-controls" id="mobileControls"><div class="joystick" id="joystick"><div class="joy-knob" id="joyKnob"></div></div><div class="mobile-actions"><button id="mobileInteract">TALK</button><button id="mobileDodge">DODGE</button><button id="mobileAttack">ATTACK</button></div></div>
+    <div class="combat-flash" id="combatFlash"></div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
